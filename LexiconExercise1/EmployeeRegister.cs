@@ -10,7 +10,7 @@ namespace LexiconExercise1
     {
         private List<Employee> employee = new List<Employee>();
 
-        public void AddEmployee(string name, double salary)
+        public void AddEmployee(string name, decimal salary)
         {
             employee.Add(new Employee(name, salary));
         }

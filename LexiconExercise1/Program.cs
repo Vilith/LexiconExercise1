@@ -17,11 +17,13 @@ List<> Anställda (Listan med de anställda)
 Uppgift 3 - Skriva programmet.
 */
 
+using Microsoft.Win32;
+
 namespace LexiconExercise1
 {
     internal class Program
     {
-                
+
         static void Main(string[] args)
         {
 
@@ -40,45 +42,84 @@ namespace LexiconExercise1
 
                 string input = Console.ReadLine();
 
-                switch (input)
+                try
                 {
-                    case "1":
 
-                        Console.WriteLine("\nEnter name: ");
+                    switch (input)
+                    {
+                        case "1":
+
+                            AddEmployee();
+                            /*
+                            Console.WriteLine("\nEnter name: ");
                             string name = Console.ReadLine();
 
-                        Console.WriteLine("\nEnter salary: ");
+                            Console.WriteLine("\nEnter salary: ");
 
-                        if (double.TryParse(Console.ReadLine(), out double salary))
-                        {
-                            register.AddEmployee(name, salary);
-                            Console.WriteLine("\nEmployee added!");
-                        }
-                        else
-                        {
-                            Console.WriteLine("\nInvalid input. Please try again!");
-                        }
-                        break;
-                                                    
-
-                    case "2":
-                        
-                        register.PrintEmployees();
-                        break;
+                            if (decimal.TryParse(Console.ReadLine(), out decimal salary))
+                            {
+                                register.AddEmployee(name, salary);
+                                Console.WriteLine("\nEmployee added!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nInvalid input. Please try again!");
+                            }*/
+                            break;
 
 
-                    case "3":
+                        case "2":
 
-                        Console.WriteLine("Quitting program!");
-                        return;
+                            PrintEmployees();
+                           // register.PrintEmployees();
+                            break;
 
 
-                    default:
-                        Console.WriteLine("Invalid input!");
-                        break;
+                        case "3":
+
+                            Console.WriteLine("Quitting program!");
+                            return;
+
+
+                        default:
+                            Console.WriteLine("Invalid input!");
+                            break;
+                    }
 
                 }
+                catch (FormatException fe)
+                {
+                    Console.WriteLine($"Wrong at parsing: {fe.Message}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Unexpected error occured: {ex.Message}");
+                }
+            }
+            void AddEmployee()
+            {
+                Console.WriteLine("\nEnter name: ");
+                string name = Console.ReadLine();
+
+                Console.WriteLine("\nEnter salary: ");
+
+                if (decimal.TryParse(Console.ReadLine(), out decimal salary))
+                {
+                    register.AddEmployee(name, salary);
+                    Console.WriteLine("\nEmployee added!");
+                }
+                else
+                {
+                    Console.WriteLine("\nInvalid input. Please try again!");
+                }
+            }
+
+            void PrintEmployees()
+            {
+                register.PrintEmployees();
             }
         }
+
+        
     }
 }
