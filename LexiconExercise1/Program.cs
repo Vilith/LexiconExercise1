@@ -21,11 +21,11 @@ namespace LexiconExercise1
 {
     internal class Program
     {
-        static EmployeeRegister eR = new EmployeeRegister();
+                
         static void Main(string[] args)
         {
 
-            //EmployeeRegister register = new EmployeeRegister();
+            EmployeeRegister register = new EmployeeRegister();
 
             while (true)
             {
@@ -51,7 +51,7 @@ namespace LexiconExercise1
 
                         if (double.TryParse(Console.ReadLine(), out double salary))
                         {
-                            eR.AddEmployee(name, salary);
+                            register.AddEmployee(name, salary);
                             Console.WriteLine("\nEmployee added!");
                         }
                         else
@@ -63,14 +63,14 @@ namespace LexiconExercise1
 
                     case "2":
                         
-                        eR.PrintEmployees();
+                        register.PrintEmployees();
                         break;
 
 
                     case "3":
 
                         Console.WriteLine("Quitting program!");
-                        break;
+                        return;
 
 
                     default:
