@@ -86,6 +86,7 @@ namespace LexiconExercise_3.Helpers
         private static void UpdateVehicle(VehicleHandler handler, Utils util)
         {
             handler.ListVehicles();
+
             int index = util.GetValidInt("Index to update: ");
             string brand = util.GetValidString("New brand: ");
             string model = util.GetValidString("New model: ");
